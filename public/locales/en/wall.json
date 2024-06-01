@@ -1,0 +1,14 @@
+{
+    "offerType": {
+        "ServiceOffer": "Service Offer",
+        "MaterialRequest": "Material Request",
+        "ToolMaterialSale": "Tool and Material Sale",
+        "ProjectCollaboration": "Project Collaboration",
+        "WorkshopsTraining": "Workshops and Training",
+        "WorkShowcase": "Work Showcase",
+        "EventAnnouncement": "Event Announcement",
+        "AdviceTips": "Advice and Tips",
+        "ToolMaterialReview": "Tool and Material Review",
+        "JobVacancy": "Job Vacancy"
+    }
+}
