@@ -47,7 +47,7 @@ const FallingPieces: React.FC = () => {
       });
 
       setFlakes(flakes => [...flakes, newFlake]);
-    }, 300);
+    }, 800);
 
     return () => clearInterval(interval);
   }, []);

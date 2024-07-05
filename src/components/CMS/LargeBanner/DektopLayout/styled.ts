@@ -21,28 +21,6 @@ const createLargeBannerContainerWidth = (isSidebarOpen: boolean) => {
   `;
 };
 
-type ArticleWrapperProps = { index: number };
-
-export const ArticleWrapper = styled.div<ArticleWrapperProps>`
-  position: absolute;
-  top: 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  display: flex;
-  align-items: center;
-
-  z-index: ${({ index, theme }) => index + theme.zIndexes.md};
-
-  width: 100%;
-  max-width: 45rem;
-
-  @media ${devices.tablet} {
-    width: auto;
-  }
-`;
-
 type LargeBannerWrapperProps = {
   $isSidebarOpen: boolean;
 };
@@ -76,7 +54,7 @@ type LargeBannerContentProps = {
   $isSidebarOpen: boolean;
 };
 
-export const LargeBannerContent = styled.div<LargeBannerContentProps>`
+export const LargeBannerContent = styled(motion.div)<LargeBannerContentProps>`
   background-color: ${({ theme }) => theme.colors.background};
 
   top: ${({ $isFrozen }) => ($isFrozen ? 0 : 'auto')};
@@ -95,4 +73,73 @@ export const LargeBannerContent = styled.div<LargeBannerContentProps>`
 
   ${({ $isSidebarOpen }) => createLargeBannerContainerWidth($isSidebarOpen)}
   height: 100vh;
+`;
+
+export const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: ${({ theme }) => theme.zIndexes.xs};
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 80%,
+    #003366 100%
+  );
+`;
+
+export const Content = styled.div`
+  position: relative;
+
+  z-index: ${({ theme }) => theme.zIndexes.xs};
+
+  color: #fff;
+`;
+
+export const Badge = styled.div`
+  background-color: #f50057;
+  color: #fff;
+  padding: 5px 10px;
+  display: inline-block;
+  margin-bottom: 20px;
+`;
+
+export const BannerImage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: ${({ theme }) => theme.zIndexes.xxs};
+
+  & > span {
+    height: 100% !important;
+  }
+
+  img {
+    object-fit: cover;
+  }
+`;
+
+export const Forests = styled.img`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+
+export const BottomImage = styled.img`
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  z-index: ${({ theme }) => theme.zIndexes.xl};
+
+  position: relative;
 `;

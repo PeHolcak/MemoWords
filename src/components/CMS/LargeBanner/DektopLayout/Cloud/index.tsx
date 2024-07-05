@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion, useTransform, useScroll } from 'framer-motion';
-import useDimensions from 'src/hooks/useDimensions';
 import * as S from './styled';
 
 type ResultTupples = [number, number];

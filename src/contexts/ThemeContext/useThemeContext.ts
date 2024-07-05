@@ -34,6 +34,15 @@ const adaptStylesToMuiTheme = (styles: StylesType, isDarkMode: boolean) => {
       }
     },
     typography: {
+      h1: {
+        color: styles.colors.text
+      },
+      h2: {
+        color: styles.colors.text
+      },
+      h3: {
+        color: styles.colors.text
+      },
       body1: {
         color: styles.colors.text
       },

@@ -26,7 +26,7 @@ export const CloudPart = styled.div<CloudPartProps>`
   width: 45px;
   height: 45px;
   background: white;
-  z-index: ${({ theme }) => theme.zIndexes.sm};
+  z-index: ${({ theme }) => theme.zIndexes.xs};
   border-radius: 50%;
 
   position: absolute;

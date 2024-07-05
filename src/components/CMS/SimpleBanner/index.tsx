@@ -1,9 +1,10 @@
-import React from "react";
-import Image from "next/image";
+import React from 'react';
 
-import { Typography } from "@mui/material";
+import ButtonLink from '@components/Buttons/ButtonLink';
 
-import * as S from "./styled";
+import { Typography } from '@mui/material';
+
+import * as S from './styled';
 
 type SimpleBannerProps = {
   header: string;
@@ -18,8 +19,12 @@ const SimpleBanner: React.FC<SimpleBannerProps> = ({ header, description }) => {
           {header}
         </Typography>
         <Typography>{description}</Typography>
-        <S.StyledButton variant="contained">Shop Now</S.StyledButton>
-        <S.StyledButton variant="outlined">Shop Now</S.StyledButton>
+        <ButtonLink variant="contained" link="/shop">
+          Shop Now
+        </ButtonLink>
+        <ButtonLink variant="outlined" link="/shop">
+          Contact
+        </ButtonLink>
       </S.TextSection>
     </S.BannerContainer>
   );

@@ -1,14 +1,12 @@
-import React, { useState } from "react";
-import { Typography } from "@mui/material";
-import Grid from "@mui/material/Grid";
+import React from 'react';
+import { Typography } from '@mui/material';
+import Grid from '@mui/material/Grid';
 
-import EntryLayout from "@components/Layouts/EntryLayout";
+import EntryLayout from '@components/Layouts/EntryLayout';
 
-import * as S from "./styled";
-
+import * as S from './styled';
 
 const Entry: React.FC = () => {
-
   return (
     <EntryLayout>
       <Grid item flex={0}>

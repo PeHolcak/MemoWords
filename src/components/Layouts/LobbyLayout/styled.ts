@@ -27,7 +27,7 @@ export const LayoutWrapper = styled.div<LayoutContainerProps>`
   position: relative;
   z-index: ${({ theme }) => theme.zIndexes.md};
 
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.background};
 
   @media ${devices.tablet} {
     width: ${({ $isSidebarOpen }) =>

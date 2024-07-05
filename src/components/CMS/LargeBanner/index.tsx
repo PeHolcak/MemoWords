@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { motion, useTransform, useScroll } from 'framer-motion';
-import { ThemeContext } from 'styled-components';
+import React, { useEffect, useState } from 'react';
+
+import TabletOnlyDown from '@components/Containers/TabletOnlyDown';
+import TabletOnlyUp from '@components/Containers/TabletOnlyUp';
 
 import useDimensions from 'src/hooks/useDimensions';
 
-import ParallaxAnimation from './Sun';
-import * as S from './styled';
-import FallingPartsBackdrop from './FallingPartsBackdrop';
 import Article from './Article';
-import Cloud from './Cloud';
+import DesktopLayout from './DektopLayout';
+import * as S from './styled';
+import MobileLayout from './MobileLayout';
 
 type LargeBannerProps = {
   header: string;
@@ -18,47 +18,12 @@ type LargeBannerProps = {
   isSidebarOpen: boolean;
 };
 
-const LargeBanner: React.FC<LargeBannerProps> = ({
-  header,
-  description,
-  badgeText,
-  imageUrl,
-  isSidebarOpen
-}) => {
-  const [scrollY, setScrollY] = useState(0);
+const LargeBanner: React.FC<LargeBannerProps> = ({ isSidebarOpen }) => {
   const { width, height } = useDimensions();
-  const themeData = useContext(ThemeContext);
-
   const dimensionsHeight = height ?? 1024;
   const threshold = dimensionsHeight * 5;
 
-  const { scrollY: scrollYA } = useScroll();
-
-  const transformGradientInput = [0, (threshold * 4) / 5, threshold];
-
-  const firstBackgroundGradientColor = useTransform(
-    scrollYA,
-    transformGradientInput,
-    themeData?.colors.largeBannerColors.top ?? []
-  );
-
-  const secondBackgroundGradientColor = useTransform(
-    scrollYA,
-    transformGradientInput,
-    themeData?.colors.largeBannerColors.bottom ?? []
-  );
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const isFrozen = scrollY < threshold - dimensionsHeight;
+  const [scrollY, setScrollY] = useState(0);
 
   const ARTICLES = [
     {
@@ -84,74 +49,81 @@ const LargeBanner: React.FC<LargeBannerProps> = ({
       description:
         'Join us on a journey to uncover the hidden wonders and secrets of untouched natural habitats.',
       badgeText: 'Explore'
+    },
+    {
+      header: "Into the Wild: Nature's Untold Stories",
+      description:
+        'Join us on a journey to uncover the hidden wonders and secrets of untouched natural habitats.',
+      badgeText: 'Explore'
+    },
+    {
+      header: 'last',
+      description:
+        'Join us on a journey to uncover the hidden wonders and secrets of untouched natural habitats.',
+      badgeText: 'Explore'
     }
   ];
 
-  return (
-    <S.LargeBannerWrapper $height={threshold} $isSidebarOpen={isSidebarOpen}>
-      <S.LargeBannerContainer
-        $isFrozen={isFrozen}
-        $isSidebarOpen={isSidebarOpen}
-        style={{
-          background: `linear-gradient(to bottom, ${firstBackgroundGradientColor.get()}, transparent),
-          radial-gradient(ellipse at bottom, ${secondBackgroundGradientColor.get()}, transparent)`
-        }}
-      >
-        {ARTICLES.map((article, index) => {
-          const visiblityLength = threshold / ARTICLES.length;
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrollY(currentScrollY);
+    };
 
-          const createVariantType = () => {
-            if (scrollY < visiblityLength * index) {
-              return 'initial';
-            } else if (scrollY >= visiblityLength * (index + 1)) {
-              return 'hidden';
-            }
-            return 'visible';
-          };
-          return (
-            <S.ArticleWrapper index={index}>
-              <Article
-                key={`article_${index}`}
-                header={article.header}
-                description={article.description}
-                badgeText={article.badgeText}
-                variantType={createVariantType()}
-              />
-            </S.ArticleWrapper>
-          );
-        })}
-        <ParallaxAnimation threshold={threshold} />
-        <Cloud
-          threshold={threshold}
-          translateXResult={[width, 0]}
-          translateYResult={[0, height]}
-          rotateResult={[0, 20]}
-          scaleResult={[1, 2.5]}
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const content = ARTICLES.map((article, index) => {
+    const visiblityLength = (threshold - 400) / ARTICLES.length;
+
+    const createVariantType = () => {
+      if (scrollY < visiblityLength * index) {
+        return 'initial';
+      } else if (scrollY >= visiblityLength * (index + 1)) {
+        return 'hidden';
+      }
+      return 'visible';
+    };
+
+    return (
+      <S.ArticleWrapper index={index}>
+        <Article
+          key={`article_${index}`}
+          header={article.header}
+          description={article.description}
+          badgeText={article.badgeText}
+          variantType={createVariantType()}
         />
-        <Cloud
+      </S.ArticleWrapper>
+    );
+  });
+
+  return (
+    <>
+      <TabletOnlyDown>
+        <MobileLayout
+          isSidebarOpen={isSidebarOpen}
+          dimensionsHeight={dimensionsHeight}
           threshold={threshold}
-          translateXResult={[(width * 2) / 3, -width]}
-          translateYResult={[0, height]}
-          rotateResult={[0, 50]}
-          scaleResult={[1, 3]}
-        />
-        <Cloud
-          threshold={threshold}
-          translateXResult={[width / 2, -200]}
-          translateYResult={[height / 3, height]}
-          rotateResult={[0, 0]}
-          scaleResult={[1, 1]}
-        />
-        <FallingPartsBackdrop />
-        <motion.div
-          initial={{ y: '120vh', opacity: 0 }}
-          animate={{ y: '100vh', opacity: 1 }}
-          transition={{ delay: 5, type: 'ease', stiffness: 100 }}
+          scrollY={scrollY}
         >
-          <S.Forests src="/images/LargeBanner/forests.svg" />
-        </motion.div>
-      </S.LargeBannerContainer>
-    </S.LargeBannerWrapper>
+          {content}
+        </MobileLayout>
+      </TabletOnlyDown>
+      <TabletOnlyUp>
+        <DesktopLayout
+          isSidebarOpen={isSidebarOpen}
+          width={width}
+          height={height}
+          dimensionsHeight={dimensionsHeight}
+          threshold={threshold}
+          scrollY={scrollY}
+        >
+          {content}
+        </DesktopLayout>
+      </TabletOnlyUp>
+    </>
   );
 };
 

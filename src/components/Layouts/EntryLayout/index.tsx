@@ -1,38 +1,28 @@
-import React, { useState } from "react";
-import { Typography } from "@mui/material";
-import Grid from "@mui/material/Grid";
+import React from 'react';
+import Grid from '@mui/material/Grid';
 
-import LobbyLayout from "@components/Layouts/LobbyLayout";
-import Modal from "@components/Modal";
+import LobbyLayout from '@components/Layouts/LobbyLayout';
+import Modal from '@components/Modal';
 
-import LoginForm from "./LoginForm"
-import RegisterForm from "./RegisterForm"
-import * as S from "./styled";
-import Header from "./Header";
+import LoginForm from './LoginForm';
+import RegisterForm from './RegisterForm';
+import * as S from './styled';
+import Header from './Header';
+import { useEntryLayout } from './useEntryLayout';
 
-
-type VisibleModalType = "none" | "login" | "register";
-
-const EntryLayout: React.FC<React.PropsWithChildren> = ({children}) => {
-  const [visibleModal, setVisibleModal] = useState<VisibleModalType>("none");
-
-  const handleOpenLoginModal = () => {
-    setVisibleModal("login");
-  };
-
-  const handleOpenRegisterModal = () => {
-    setVisibleModal("register");
-  };
-
-  const handleCloseModal = () => {
-    setVisibleModal("none");
-  };
+const EntryLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
+  const {
+    handleOpenLoginModal,
+    handleOpenRegisterModal,
+    handleCloseModal,
+    visibleModal
+  } = useEntryLayout();
 
   const createModalContent = () => {
     switch (visibleModal) {
-      case "login":
+      case 'login':
         return <LoginForm />;
-      case "register":
+      case 'register':
         return <RegisterForm />;
       default:
         return null;
@@ -43,7 +33,7 @@ const EntryLayout: React.FC<React.PropsWithChildren> = ({children}) => {
     <LobbyLayout>
       <S.EntryLayoutWrapper>
         <S.EntryLayoutContainer>
-          <Header  
+          <Header
             handleOpenLoginModal={handleOpenLoginModal}
             handleOpenRegisterModal={handleOpenRegisterModal}
           />
@@ -55,7 +45,7 @@ const EntryLayout: React.FC<React.PropsWithChildren> = ({children}) => {
           >
             {children}
           </Grid>
-          <Modal open={visibleModal !== "none"} handleClose={handleCloseModal}>
+          <Modal open={visibleModal !== 'none'} handleClose={handleCloseModal}>
             {createModalContent()}
           </Modal>
         </S.EntryLayoutContainer>

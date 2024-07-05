@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { FallingPieceProps } from '@components/CMS/LargeBanner/FallingPartsBackdrop';
+import { FallingPieceProps } from '@components/CMS/LargeBanner/DektopLayout/FallingPartsBackdrop';
 
 import * as S from './styled';
 import { getRandomNumber } from '@utils/numberUtils';

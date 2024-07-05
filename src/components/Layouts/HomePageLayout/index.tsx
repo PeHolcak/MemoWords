@@ -1,8 +1,8 @@
-import LargeBanner from "@components/CMS/LargeBanner";
+import LargeBanner from '@components/CMS/LargeBanner';
 
-import LobbyLayout from "src/components/Layouts/LobbyLayout";
+import LobbyLayout from 'src/components/Layouts/LobbyLayout';
 
-import * as S from "./styled";
+import * as S from './styled';
 
 const HomePageLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   const renderPrimaryBanner = (isSidebarOpen: boolean) => {
@@ -16,12 +16,13 @@ const HomePageLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
       />
     );
   };
+
   return (
-    <>
-      <S.LobbyLayoutWrapper>
-        <LobbyLayout renderPrimaryBanner={renderPrimaryBanner}>{children}</LobbyLayout>
-      </S.LobbyLayoutWrapper>
-    </>
+    <S.LobbyLayoutWrapper>
+      <LobbyLayout renderPrimaryBanner={renderPrimaryBanner}>
+        {children}
+      </LobbyLayout>
+    </S.LobbyLayoutWrapper>
   );
 };
 

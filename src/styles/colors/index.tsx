@@ -3,12 +3,13 @@ export const darkThemeStylesColors = {
   secondary: '#FF5733',
   tertiary: '#000000',
 
-  text: '#B0BEC5',
+  text: '#eaebec',
   contrast_text: '#ECEFF1',
 
   background: '#000000',
+  modalBackground: '#333232',
   menuBackground: '#555',
-  cardBackground: '#0D0D0D',
+  cardBackground: '#000000',
 
   alpha: '#FF5733',
   beta: '#0A4A4A',
@@ -27,8 +28,8 @@ export const darkThemeStylesColors = {
   info: '#01579B',
 
   largeBannerColors: {
-    top: ['#3f2c4b', '#25254d', '#472139'],
-    bottom: ['#0c0c1d', '#28283b', '#000000']
+    top: ['#823aaf', '#1c1c48', '#060606'],
+    bottom: ['#1e1e8d', '#52284d', '#6f376b']
   }
 };
 
@@ -41,8 +42,9 @@ export const lightThemeStylesColors = {
   contrast_text: '#f5f6fa',
 
   background: '#ffffff',
+  modalBackground: '#ffffff',
   menuBackground: '#D6EAF8',
-  cardBackground: '#D6EAF8',
+  cardBackground: '#f0f0f0',
 
   alpha: '#76D7C4',
   beta: '#3498DB',

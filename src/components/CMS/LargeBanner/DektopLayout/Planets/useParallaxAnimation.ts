@@ -4,7 +4,7 @@ import useDimensions from 'src/hooks/useDimensions';
 
 const DEFAULT_DIMENSIONS_HEIGHT = 1280;
 
-export const useParallaxAnimation = (threshold: number) => {
+export const useParallaxAnimation = (threshold: number, colors: string[]) => {
   const dimensions = useDimensions();
   const { scrollY } = useScroll();
   const dimensionsHeight = dimensions.height ?? DEFAULT_DIMENSIONS_HEIGHT;
@@ -24,12 +24,15 @@ export const useParallaxAnimation = (threshold: number) => {
   const background = useTransform(
     scrollY,
     [0, threshold / 2, threshold],
-    ['#ede0a2', '#ffd500', '#ff8800']
+    colors
   );
+
+  const rotate = useTransform(scrollY, [0, threshold], [-40, 40]);
 
   return {
     translateX,
     translateY,
-    background
+    background,
+    rotate
   };
 };

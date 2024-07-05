@@ -1,5 +1,6 @@
 export const publicRoutes = {
-  home: '/'
+  home: '/',
+  faq: '/faq'
 };
 
 export const privateRoutes = {};

@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
 
-import { Typography, Button } from '@mui/material';
-
-import * as S from './styled';
+import ArticleContent from './ArticleContent';
 
 const variants = {
   initial: {
-    x: '-100vw', // Start from off-screen left
+    x: '-100vw',
     opacity: 0,
-    transition: { duration: 1, type: 'spring' } // Use spring for smoother effect
+    transition: { duration: 1, type: 'spring' }
   },
   visible: {
-    x: 0, // Move to original position
+    x: 0,
     opacity: 1,
-    transition: { duration: 1, type: 'spring' } // Consistent transition type and duration
+    transition: { duration: 1, type: 'spring' }
   },
   hidden: {
-    x: '100vw', // Exit to off-screen right
+    x: '100vw',
     opacity: 0,
     transition: { duration: 1, type: 'spring' }
   }
@@ -50,26 +49,11 @@ const Article: React.FC<ArticleProps> = ({
             margin: '20px 0'
           }}
         >
-          <S.Content>
-            {badgeText && <S.Badge>{badgeText}</S.Badge>}
-            <Typography variant="h3" component="h1" gutterBottom>
-              {header}
-            </Typography>
-            <Typography variant="body1" gutterBottom mb={4}>
-              {description}
-            </Typography>
-
-            <Button variant="contained" color="primary">
-              Shop Now
-            </Button>
-            <Button
-              variant="outlined"
-              color="secondary"
-              style={{ marginLeft: '10px' }}
-            >
-              Learn More
-            </Button>
-          </S.Content>
+          <ArticleContent
+            header={header}
+            description={description}
+            badgeText={badgeText}
+          />
         </motion.div>
       )}
     </AnimatePresence>

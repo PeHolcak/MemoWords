@@ -21,8 +21,10 @@
     "@prisma/client": "^5.14.0",
     "@repo/logger": "*",
     "@repo/ui": "*",
+    "@tanstack/react-query": "^5.40.0",
     "@types/uuid": "^9.0.8",
     "apollo-datasource-mongodb": "^0.6.0",
+    "axios": "^1.7.2",
     "formik": "^2.4.5",
     "framer-motion": "^11.0.3",
     "graphql": "^16.8.1",
@@ -39,7 +41,8 @@
     "react-swipeable": "^7.0.1",
     "styled-components": "^6.1.8",
     "uuid": "^9.0.1",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.0.4",

@@ -25,13 +25,9 @@ type ArticleWrapperProps = { index: number };
 
 export const ArticleWrapper = styled.div<ArticleWrapperProps>`
   position: absolute;
-  top: 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  display: flex;
-  align-items: center;
 
   z-index: ${({ index, theme }) => index + theme.zIndexes.md};
 

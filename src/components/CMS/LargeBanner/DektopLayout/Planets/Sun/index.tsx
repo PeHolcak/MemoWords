@@ -1,10 +1,7 @@
 import React from 'react';
-import { motion, useTransform, useScroll } from 'framer-motion';
-
-import useDimensions from 'src/hooks/useDimensions';
 
 import * as S from './styled';
-import { useParallaxAnimation } from './useParallaxAnimation';
+import { useParallaxAnimation } from '@components/CMS/LargeBanner/DektopLayout/Planets/useParallaxAnimation';
 
 export type InitialPositionType = {
   x: number;
@@ -16,8 +13,10 @@ type ParallaxAnimationProps = React.PropsWithChildren<{
 }>;
 
 const ParallaxAnimation: React.FC<ParallaxAnimationProps> = ({ threshold }) => {
-  const { translateX, translateY, background } =
-    useParallaxAnimation(threshold);
+  const { translateX, translateY, background } = useParallaxAnimation(
+    threshold,
+    ['#ede0a2', '#ffd500', '#ff8800']
+  );
   return (
     <S.SunWrapper
       translateX={translateX}
