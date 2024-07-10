@@ -3,7 +3,10 @@ export const publicRoutes = {
   faq: '/faq'
 };
 
-export const privateRoutes = {};
+export const privateRoutes = {
+  courses: '/courses',
+  course: (id: string) => `/courses/${id}`
+};
 
 export const routes = {
   ...publicRoutes,

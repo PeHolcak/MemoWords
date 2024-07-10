@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Typography } from '@mui/material';
 
 export const SidebarWrapper = styled.div`
-  height: 100vh;
+  height: 100dvh;
   width: 15rem;
 
   position: fixed;

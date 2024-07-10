@@ -20,7 +20,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 const Container = styled.div`
   display: flex;
   background-color: #f5f5f5;
-  min-height: 100vh;
+  min-height: 100dvh;
 `;
 
 const Content = styled(motion.main)`

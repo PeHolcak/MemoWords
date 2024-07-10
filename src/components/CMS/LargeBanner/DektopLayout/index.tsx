@@ -95,7 +95,7 @@ const DesktopLayout: React.FC<DesktopLayoutProps> = ({
           <FallingPartsBackdrop />
           <motion.div
             initial={{ y: '120vh', opacity: 0 }}
-            animate={{ y: '100vh', opacity: 1 }}
+            animate={{ y: '100dvh', opacity: 1 }}
             transition={{ delay: 0.5, type: 'ease', stiffness: 100 }}
           >
             <S.Forests src="/images/LargeBanner/forests.svg" />

@@ -20,7 +20,7 @@ export const LayoutWrapper = styled.div<LayoutContainerProps>`
 
   transition-duration: 0.4s;
 
-  min-height: 100vh;
+  min-height: 100dvh;
 
   display: flex;
 

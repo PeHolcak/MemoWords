@@ -1,54 +1,67 @@
 // components/Navbar.js
-import React from "react";
-import styled from "styled-components";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import TopToDown from "@components/Animations/TopToDown";
+import React from 'react';
+import Image from 'next/image';
 
-const NavbarContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 32px;
-  background-color: #fff;
-  border-radius: 25px; // Zaoblené rohy
-  max-width: 1280px; // Max šířka navbaru
-  margin: 10px auto; // Centrování s nějakým okrajem
+import TopToDown from '@components/Animations/TopToDown';
+import ButtonSimpleLink from '@components/Buttons/ButtonSimpleLink';
 
-  width: 100%;
-
-  width: calc(100% - 64px);
-`;
-
-const Logo = styled.h1`
-  font-size: 1.5em; // Velikost fontu pro logo
-  color: #333; // Barva fontu pro logo
-`;
-
-// Použijte vlastní ikonu, zde používám příklad obrázku
-const ProfileIcon = styled.div`
-  width: 40px; // Nastavte šířku ikony
-  height: 40px; // Nastavte výšku ikony
-  border-radius: 20px; // Kruhová ikona
-  overflow: hidden;
-`;
+import * as S from './styled';
+import DarkModeSwitch from '@components/DarkModeSwitch';
 
 const Header = () => {
+  const links = [
+    {
+      href: '/courses',
+      name: 'Courses',
+      label: 'Courses',
+      isActive: true
+    },
+    {
+      href: '/courses',
+      name: 'English1',
+      label: 'English1'
+    },
+    {
+      href: '/courses',
+      name: 'English2',
+      label: 'English2'
+    },
+    {
+      href: '/profile',
+      name: 'Profile',
+      label: 'Profile'
+    }
+  ];
+
   return (
     <TopToDown>
-      <NavbarContainer>
-        <Logo>Discover</Logo>
-        <ProfileIcon>
-          <Image
-            src={
-              "https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
-            }
-            alt="Profile"
-            width={40}
-            height={40}
-          />
-        </ProfileIcon>
-      </NavbarContainer>
+      <S.NavbarContainer>
+        <S.Logo>MemoWord</S.Logo>
+        <S.LinksWrapper>
+          <S.LinksContainer>
+            {links.map(link => (
+              <S.LinksItem key={`link_${link.name}`} $isActive={link.isActive}>
+                <ButtonSimpleLink link={link.href}>
+                  {link.label}
+                </ButtonSimpleLink>
+              </S.LinksItem>
+            ))}
+          </S.LinksContainer>
+        </S.LinksWrapper>
+        <S.Controllers>
+          <DarkModeSwitch />
+          <S.ProfileIcon>
+            <Image
+              src={
+                'https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg'
+              }
+              alt="Profile"
+              width={40}
+              height={40}
+            />
+          </S.ProfileIcon>
+        </S.Controllers>
+      </S.NavbarContainer>
     </TopToDown>
   );
 };

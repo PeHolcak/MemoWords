@@ -1,18 +1,25 @@
-import React from "react";
+import React from 'react';
 
-import PageWrapper from "@components/PageWrapper";
-import LeftToRight from "@components/Animations/LeftToRight";
+import PageWrapper from '@components/PageWrapper';
+import LeftToRight from '@components/Animations/LeftToRight';
 
-import * as S from "./styled";
-import Header from "./Header";
-import Navbar from "./Navbar";
+import * as S from './styled';
+import Header from './Header';
+import Navbar from './Navbar';
 
-const AppLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
+export type AppLayoutProps = React.PropsWithChildren<{
+  alignChildren?: 'start' | 'center' | 'end';
+}>;
+
+const AppLayout: React.FC<AppLayoutProps> = ({
+  children,
+  alignChildren = 'center'
+}) => {
   return (
     <PageWrapper title="AppLayout" type="private">
       <S.AppLayoutWrapper>
         <Header />
-        <S.ChildrenWrapper>
+        <S.ChildrenWrapper alignChildren={alignChildren}>
           <S.ChildrenContainer>
             <LeftToRight>
               <S.AnimationContainer>{children}</S.AnimationContainer>

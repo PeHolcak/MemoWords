@@ -72,7 +72,7 @@ export const LargeBannerContent = styled(motion.div)<LargeBannerContentProps>`
   transition-duration: 0.4s;
 
   ${({ $isSidebarOpen }) => createLargeBannerContainerWidth($isSidebarOpen)}
-  height: 100vh;
+  height: 100dvh;
 `;
 
 export const Overlay = styled.div`

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { devices } from '@constants/screens-conf';
 
 export const Content = styled.div`
-  max-height: calc(100vh - 2rem - 2rem);
+  max-height: calc(100dvh - 2rem - 2rem);
   overflow-y: auto;
   position: relative;
   z-index: ${({ theme }) => theme.zIndexes.xs};
@@ -35,5 +35,5 @@ export const ContentWrapper = styled.div`
 `;
 
 export const ArticleFirstSlideWrap = styled.div`
-  display: inline;
+  display: inline-block;
 `;

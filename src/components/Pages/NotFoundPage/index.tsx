@@ -3,7 +3,7 @@ import { Container, Typography } from '@mui/material';
 import styled from 'styled-components';
 
 const StyledContainer = styled(Container)`
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;

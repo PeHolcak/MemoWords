@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
   flex: 1;
 
-  height: calc(100vh - 50px - 50px - 150px);
+  height: calc(100dvh - 50px - 50px - 150px);
 
   position: relative;
 `;
@@ -17,5 +17,5 @@ export const MatchPageWrapper = styled.div`
 
   overflow: hidden;
 
-  min-height: 100vh;
-`
+  min-height: 100dvh;
+`;

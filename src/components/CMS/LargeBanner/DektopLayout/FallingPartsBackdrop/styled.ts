@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export const FallingPartsBackdropWrap = styled.div`
   position: absolute;
-  height: 100vh;
+  height: 100dvh;
   width: 100%;
   overflow: hidden;
 

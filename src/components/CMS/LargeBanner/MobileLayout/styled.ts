@@ -90,5 +90,5 @@ export const LargeBannerContent = styled.div<LargeBannerContentProps>`
   transition-duration: 0.4s;
 
   ${({ $isSidebarOpen }) => createLargeBannerContainerWidth($isSidebarOpen)}
-  height: 100vh;
+  height: 100dvh;
 `;

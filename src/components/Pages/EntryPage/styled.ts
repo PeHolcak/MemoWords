@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { Typography, Box } from "@mui/material";
+import styled from 'styled-components';
+import { Typography, Box } from '@mui/material';
 
 export const EntryWrapper = styled.div`
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,8 +24,8 @@ export const EntryContainer = styled.div`
 `;
 
 export const Logo = styled.div`
-  width: 100px; 
-  height: 100px; 
+  width: 100px;
+  height: 100px;
   background-color: white;
   border-radius: 50%;
   display: flex;

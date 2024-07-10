@@ -16,7 +16,7 @@ type HomePageContainerProps = { $translatetoleft: boolean };
 
 export const HomePageContainer = styled.div<HomePageContainerProps>`
   width: 100vw;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
 
   transform: ${({ $translatetoleft }) =>
@@ -33,6 +33,6 @@ export const HomePageContainer = styled.div<HomePageContainerProps>`
 
 export const Divider = styled.div`
   background-color: ${({ theme }) => theme.colors.tertiary};
-  height: 100vh;
+  height: 100dvh;
   width: 3px;
 `;
