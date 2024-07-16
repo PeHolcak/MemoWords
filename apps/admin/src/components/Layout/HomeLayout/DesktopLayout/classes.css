@@ -1,0 +1,14 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer components {
+  .desktop-layout-container {
+    @apply flex;
+  }
+
+  .desktop-children-wrapper {
+    @apply flex-1 ;
+    max-width: calc(100vw - 16rem);
+  }
+}
